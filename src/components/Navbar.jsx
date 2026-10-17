@@ -38,46 +38,55 @@ function Navbar() {
     });
   };
 
-  const handleNavigation = (href) => {
-    closeMobileMenu();
 
-    if (href === "/") {
-      if (location.pathname === "/") {
-        window.history.pushState(null, "", "/");
+const handleNavigation = (href) => {
+  closeMobileMenu();
 
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      } else {
-        navigate("/");
-      }
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
 
-      return;
-    }
+  const scrollBehavior = reduceMotion ? "auto" : "smooth";
 
-    const hashIndex = href.indexOf("#");
-
-    if (hashIndex === -1) {
-      navigate(href);
-      return;
-    }
-
-    const sectionId = href.substring(hashIndex + 1);
-
+  if (href === "/") {
     if (location.pathname === "/") {
-      window.history.pushState(
-        null,
-        "",
-        `/#${sectionId}`
-      );
+      navigate("/");
 
-      scrollToSection(sectionId);
-      return;
+      window.scrollTo({
+        top: 0,
+        behavior: scrollBehavior,
+      });
+    } else {
+      navigate("/");
     }
 
+    return;
+  }
+
+  const hashIndex = href.indexOf("#");
+
+  if (hashIndex === -1) {
+    navigate(href);
+    return;
+  }
+
+  const sectionId = href.substring(hashIndex + 1);
+
+  if (location.pathname === "/") {
     navigate(`/#${sectionId}`);
-  };
+
+    // If the hash is unchanged, React Router may not
+    // trigger the hash-scrolling effect again.
+    if (location.hash === `#${sectionId}`) {
+      scrollToSection(sectionId);
+    }
+
+    return;
+  }
+
+  navigate(`/#${sectionId}`);
+};
+
 
   useEffect(() => {
     if (location.pathname !== "/" || !location.hash) {
@@ -147,7 +156,7 @@ function Navbar() {
           type="button"
           onClick={() => handleNavigation("/")}
           className="group flex items-center gap-3 text-left"
-          aria-label="Inda Obanyi — go to homepage"
+          aria-label="Inda Obanyi â€” go to homepage"
         >
           {/* Compact IO mark */}
           <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl border border-cyan-400/20 bg-cyan-400/[0.07]">
@@ -225,7 +234,7 @@ function Navbar() {
           ) : (
             <Menu size={20} />
           )}
-        </button>
+        </button>src="/images/navbar-logo.webp"
       </nav>
 
       {/* Mobile navigation */}
@@ -236,7 +245,7 @@ function Navbar() {
             <div className="mb-5 flex items-center gap-3 border-b border-white/[0.07] pb-5 sm:hidden">
               <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl border border-cyan-400/20">
                 <img
-                  src="/images/favicon.png"
+
                   alt=""
                   aria-hidden="true"
                   className="h-full w-full object-cover"

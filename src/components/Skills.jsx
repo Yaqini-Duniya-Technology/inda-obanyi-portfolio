@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+
+import { motion, useReducedMotion } from "framer-motion";
 import {
   BrainCircuit,
   ChartNoAxesCombined,
@@ -6,6 +7,7 @@ import {
   Database,
   ServerCog,
   Workflow,
+  ArrowRight,
 } from "lucide-react";
 
 const skillGroups = [
@@ -13,7 +15,7 @@ const skillGroups = [
     icon: BrainCircuit,
     title: "Machine Learning",
     description:
-      "Developing and evaluating predictive models for real-world classification and regression problems.",
+      "Developing, comparing, and evaluating predictive models for classification and regression problems.",
     skills: [
       "Supervised Learning",
       "Classification",
@@ -25,12 +27,11 @@ const skillGroups = [
       "Model Evaluation",
     ],
   },
-
   {
     icon: ChartNoAxesCombined,
     title: "Data Science",
     description:
-      "Turning raw datasets into useful information and model-ready features.",
+      "Exploring datasets, identifying patterns, and preparing reliable features for machine learning.",
     skills: [
       "Exploratory Data Analysis",
       "Feature Engineering",
@@ -42,12 +43,11 @@ const skillGroups = [
       "SMOTE",
     ],
   },
-
   {
     icon: ServerCog,
     title: "AI Engineering",
     description:
-      "Connecting trained models to APIs and interactive applications for practical use.",
+      "Integrating machine learning models with APIs, interactive applications, and practical software workflows.",
     skills: [
       "FastAPI",
       "Model Inference",
@@ -59,12 +59,11 @@ const skillGroups = [
       "Audit Logging",
     ],
   },
-
   {
     icon: Code2,
     title: "Programming & Frontend",
     description:
-      "Building application logic and responsive interfaces around intelligent systems.",
+      "Developing application logic and responsive interfaces that make intelligent systems usable.",
     skills: [
       "Python",
       "JavaScript",
@@ -76,12 +75,11 @@ const skillGroups = [
       "GitHub",
     ],
   },
-
   {
     icon: Database,
     title: "Data & Persistence",
     description:
-      "Working with data processing tools and application persistence across ML workflows.",
+      "Working with data processing libraries, datasets, notebooks, and application storage.",
     skills: [
       "Pandas",
       "NumPy",
@@ -93,12 +91,11 @@ const skillGroups = [
       "Kaggle",
     ],
   },
-
   {
     icon: Workflow,
     title: "Delivery & Deployment",
     description:
-      "Taking projects from experimentation toward usable and maintainable applications.",
+      "Moving projects from experimentation toward accessible, tested, and maintainable applications.",
     skills: [
       "Application Deployment",
       "API Integration",
@@ -113,22 +110,35 @@ const skillGroups = [
 ];
 
 const engineeringFlow = [
-  "Understand",
-  "Analyze",
-  "Engineer",
-  "Model",
-  "Evaluate",
-  "Integrate",
-  "Deploy",
+  "Define Problem",
+  "Explore Data",
+  "Engineer Features",
+  "Train Models",
+  "Evaluate Results",
+  "Build APIs",
+  "Deploy & Test",
 ];
 
 function Skills() {
+  const reduceMotion = useReducedMotion();
+
+  const reveal = (delay = 0) => ({
+    initial: reduceMotion ? false : { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.12 },
+    transition: {
+      duration: reduceMotion ? 0 : 0.5,
+      delay: reduceMotion ? 0 : delay,
+    },
+  });
+
   return (
     <section
       id="skills"
-      className="relative overflow-hidden border-t border-white/[0.07] px-6 py-24 sm:py-28"
+      aria-labelledby="skills-heading"
+      className="relative scroll-mt-24 overflow-hidden border-t border-white/[0.07] px-6 py-24 sm:py-28"
     >
-      {/* Background glow */}
+      {/* Background */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
@@ -137,16 +147,9 @@ function Skills() {
       </div>
 
       <div className="relative mx-auto max-w-7xl">
-
-        {/* =====================================================
-            HEADER
-        ====================================================== */}
-
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 22 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.55 }}
+          {...reveal()}
           className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-end"
         >
           <div>
@@ -154,39 +157,37 @@ function Skills() {
               Skills & Capabilities
             </p>
 
-            <h2 className="mt-4 text-4xl font-bold tracking-[-0.035em] text-white sm:text-5xl">
+            <h2
+              id="skills-heading"
+              className="mt-4 text-4xl font-bold tracking-[-0.035em] text-white sm:text-5xl"
+            >
               Technology is the tool.
-              <span className="block text-gray-500">
+              <span className="block text-gray-400">
                 Solving problems is the goal.
               </span>
             </h2>
           </div>
 
-          <p className="max-w-2xl text-base leading-8 text-gray-400 sm:text-lg lg:ml-auto">
-            My toolkit spans the machine learning lifecycle — from
-            understanding data and developing models to API integration,
-            application engineering, persistence, and deployment.
+          <p className="max-w-2xl text-base leading-8 text-gray-300 sm:text-lg lg:ml-auto">
+            My toolkit covers the machine learning lifecycle, from
+            understanding data and developing predictive models to
+            API integration, application engineering, testing, and
+            deployment.
           </p>
         </motion.div>
 
-        {/* =====================================================
-            ENGINEERING FLOW
-        ====================================================== */}
-
+        {/* Engineering workflow */}
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5 }}
+          {...reveal(0.05)}
           className="mt-12 overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02] px-5 py-5 sm:px-7"
         >
-          <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.25em] text-gray-600">
-            How I Build
-          </p>
+          <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
+            My Engineering Workflow
+          </h3>
 
-          <div className="flex flex-wrap items-center gap-2">
+          <ol className="flex flex-wrap items-center gap-2">
             {engineeringFlow.map((step, index) => (
-              <div
+              <li
                 key={step}
                 className="flex items-center gap-2"
               >
@@ -195,22 +196,18 @@ function Skills() {
                 </span>
 
                 {index < engineeringFlow.length - 1 && (
-                  <span
+                  <ArrowRight
                     aria-hidden="true"
-                    className="text-xs text-gray-700"
-                  >
-                    →
-                  </span>
+                    size={13}
+                    className="text-gray-500"
+                  />
                 )}
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </motion.div>
 
-        {/* =====================================================
-            SKILL GROUPS
-        ====================================================== */}
-
+        {/* Skill categories */}
         <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {skillGroups.map((group, index) => {
             const Icon = group.icon;
@@ -218,28 +215,21 @@ function Skills() {
             return (
               <motion.article
                 key={group.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.12 }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.06,
-                }}
-                className="group relative overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-white/[0.025] p-7 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/25 hover:bg-white/[0.035]"
+                {...reveal(index * 0.04)}
+                className="group relative overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-white/[0.025] p-7 transition-colors duration-300 hover:border-cyan-400/25 hover:bg-white/[0.035]"
               >
-                {/* Hover glow */}
                 <div
                   aria-hidden="true"
-                  className="absolute -right-16 -top-16 h-32 w-32 rounded-full bg-cyan-400/0 blur-3xl transition duration-500 group-hover:bg-cyan-400/[0.08]"
+                  className="pointer-events-none absolute -right-16 -top-16 h-32 w-32 rounded-full bg-cyan-400/0 blur-3xl transition duration-500 group-hover:bg-cyan-400/[0.08]"
                 />
 
                 <div className="relative">
                   <div className="flex items-start justify-between">
                     <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-400/10 bg-cyan-400/[0.07] text-cyan-400">
-                      <Icon size={20} />
+                      <Icon size={20} aria-hidden="true" />
                     </div>
 
-                    <span className="text-[10px] font-medium text-gray-700">
+                    <span className="text-xs font-medium text-gray-500">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                   </div>
@@ -248,35 +238,32 @@ function Skills() {
                     {group.title}
                   </h3>
 
-                  <p className="mt-3 min-h-[48px] text-sm leading-6 text-gray-500">
+                  <p className="mt-3 min-h-[48px] text-sm leading-6 text-gray-400">
                     {group.description}
                   </p>
 
-                  <div className="mt-6 flex flex-wrap gap-2">
+                  <ul
+                    aria-label={`${group.title} technologies and skills`}
+                    className="mt-6 flex flex-wrap gap-2"
+                  >
                     {group.skills.map((skill) => (
-                      <span
+                      <li
                         key={skill}
-                        className="rounded-full border border-white/[0.08] bg-black/20 px-3 py-1.5 text-[11px] font-medium text-gray-400 transition duration-300 group-hover:border-white/[0.12]"
+                        className="rounded-full border border-white/[0.08] bg-black/20 px-3 py-1.5 text-xs font-medium text-gray-300 transition-colors duration-300 group-hover:border-white/[0.12]"
                       >
                         {skill}
-                      </span>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
               </motion.article>
             );
           })}
         </div>
 
-        {/* =====================================================
-            ENGINEERING POSITIONING
-        ====================================================== */}
-
+        {/* Engineering mindset */}
         <motion.div
-          initial={{ opacity: 0, y: 22 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.55 }}
+          {...reveal()}
           className="mt-8 rounded-[2rem] border border-cyan-400/15 bg-gradient-to-r from-cyan-400/[0.055] to-transparent p-7 sm:p-9"
         >
           <div className="grid gap-6 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
@@ -290,12 +277,13 @@ function Skills() {
               </h3>
             </div>
 
-            <p className="leading-7 text-gray-400">
-              I approach machine learning as part of a larger software
-              system. That means thinking not only about model
-              performance, but also data quality, APIs, user experience,
-              persistence, security, deployment, monitoring, and how the
-              final application creates value.
+            <p className="leading-7 text-gray-300">
+              I approach machine learning as part of a larger
+              software system. Beyond model performance, I consider
+              data quality, explainability, APIs, user experience,
+              persistence, security, deployment, and testing.
+              My goal is to turn useful predictions into applications
+              people can understand and use.
             </p>
           </div>
         </motion.div>

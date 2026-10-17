@@ -74,30 +74,21 @@ function Hero() {
           {/* Professional positioning */}
 
           <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.5,
-              delay: 0.05,
-            }}
-            className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400 sm:text-sm"
-          >
-            AI/ML Engineer
-
-            <span className="mx-3 text-cyan-400">
-              ·
-            </span>
-
-            AI Engineering
-
-            <span className="mx-3 hidden text-cyan-400 sm:inline">
-              ·
-            </span>
-
-            <span className="hidden sm:inline">
-              Intelligent Systems
-            </span>
-          </motion.p>
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{
+    duration: 0.55,
+    delay: 0.18,
+  }}
+  className="mt-7 max-w-2xl text-base leading-8 text-gray-400 sm:text-lg"
+>
+  I'm Inda Obanyi, an AI/ML Engineer and Software Developer
+  specializing in turning machine learning models into practical
+  applications. I build predictive systems, Python APIs,
+  intelligent workflows, and user-focused AI software —
+  from experimentation and model evaluation to application
+  development and deployment.
+</motion.p>
 
           {/* =================================================
               MAIN HEADING
@@ -154,7 +145,7 @@ function Hero() {
             {/* Projects */}
 
             <Link
-              to="/#projects"
+                to="/projects"
               className="group inline-flex items-center justify-center gap-2 rounded-full bg-cyan-400 px-7 py-3.5 text-sm font-bold text-black shadow-[0_0_35px_rgba(34,211,238,0.12)] transition duration-300 hover:-translate-y-0.5 hover:bg-cyan-300"
             >
               Explore My Work
@@ -308,11 +299,14 @@ function Hero() {
               <div className="relative aspect-[4/5] overflow-hidden rounded-[1.8rem] bg-zinc-950">
 
                 <img
-                  src="/images/profile.jpg"
-                  alt="Inda Obanyi, AI/ML Engineer"
-                  className="h-full w-full object-cover object-top"
-                  fetchPriority="high"
-                />
+  src="/images/profile.jpg"
+  alt="Inda Obanyi, AI/ML Engineer and Software Developer"
+  className="h-full w-full object-cover object-top"
+  fetchPriority="high"
+  loading="eager"
+  decoding="async"
+  sizes="(min-width: 1024px) 470px, 100vw"
+/>
 
                 {/* Portrait overlay */}
 
