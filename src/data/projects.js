@@ -544,7 +544,7 @@ const projects = [
     image: "/projects/airline-satisfaction.webp",
 
     // Add the confirmed repository URL when available.
-    github: "",
+    github: "https://github.com/Inda-Obanyi/airline-satisfaction-ai",
 
     demo: "https://airline-satisfaction-ai.streamlit.app/",
 
