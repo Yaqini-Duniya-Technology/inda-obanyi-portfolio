@@ -2,8 +2,6 @@ import { motion } from "framer-motion";
 import {
   BrainCircuit,
   Code2,
-  Database,
-  GitBranch,
   Rocket,
   Wrench,
 } from "lucide-react";
