@@ -54,10 +54,8 @@ function ProjectCard({ project, index = 0 }) {
 
   // Explicit project status is preferred over inferring
   // production readiness from the existence of a demo.
-  const projectStatus =
-    typeof project.status === "string"
-      ? project.status.trim()
-      : "";
+  const projectStatus = [project.developmentStatus, project.status]
+    .find((value) => typeof value === "string" && value.trim())?.trim() || "";
 
   return (
     <motion.article
@@ -149,6 +147,23 @@ function ProjectCard({ project, index = 0 }) {
             project.description ||
             "Explore the project's technical approach, implementation, and outcomes."}
         </p>
+
+        {(project.whyBuilding || project.plannedOutcome) && (
+          <div className="mt-5 space-y-3 border-l-2 border-cyan-400/30 pl-4">
+            {project.whyBuilding && (
+              <p className="line-clamp-2 text-xs leading-6 text-gray-300">
+                <span className="font-semibold text-cyan-300">Why I'm building it: </span>
+                {project.whyBuilding}
+              </p>
+            )}
+            {project.plannedOutcome && (
+              <p className="line-clamp-2 text-xs leading-6 text-gray-300">
+                <span className="font-semibold text-cyan-300">My goal: </span>
+                {project.plannedOutcome}
+              </p>
+            )}
+          </div>
+        )}
 
         {/* Technology stack */}
         {technologies.length > 0 && (

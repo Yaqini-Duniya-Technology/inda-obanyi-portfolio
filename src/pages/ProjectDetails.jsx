@@ -90,9 +90,9 @@ function ProjectDetails() {
   const comparedModels = list(project.evaluation?.modelsCompared).length
     ? list(project.evaluation.modelsCompared)
     : list(project.model?.comparison);
-  const status = typeof project.status === "string" && project.status.trim()
-    ? project.status.trim()
-    : "Project Case Study";
+  const status = [project.developmentStatus, project.status]
+    .find((value) => typeof value === "string" && value.trim())?.trim()
+    || "Project Case Study";
   const nextProject = projects.length > 1 ? projects[(projectIndex + 1) % projects.length] : null;
   const description = project.shortDescription || project.description || "Explore this AI engineering project.";
   const imageUrl = project.image ? new URL(project.image, SITE_URL).href : undefined;
@@ -171,13 +171,39 @@ function ProjectDetails() {
         </section>
 
         <div className="mx-auto max-w-7xl px-6 pb-24">
-          {project.description && <ContentSection reduceMotion={reduceMotion}><SectionHeading number="01" label="Overview" title="What I built" /><div className="mt-8 rounded-[2rem] border border-white/[0.08] bg-white/[0.025] p-7 sm:p-10"><p className="text-base leading-8 text-gray-300">{project.description}</p></div></ContentSection>}
+          {project.description && <ContentSection reduceMotion={reduceMotion}><SectionHeading number="01" label="Overview" title={status.toLowerCase().includes("development") ? "What I am building" : "What I built"} /><div className="mt-8 rounded-[2rem] border border-white/[0.08] bg-white/[0.025] p-7 sm:p-10"><p className="text-base leading-8 text-gray-300">{project.description}</p></div></ContentSection>}
+
+          {(project.whyBuilding || project.plannedOutcome) && (
+            <ContentSection reduceMotion={reduceMotion}>
+              <SectionHeading
+                label="Vision & Motivation"
+                title="Why I am building this project"
+                description="The motivation behind the work and the outcomes I want to achieve."
+              />
+              <div className="mt-8 grid gap-5 md:grid-cols-2">
+                {project.whyBuilding && (
+                  <div className="rounded-[1.75rem] border border-white/[0.08] bg-white/[0.025] p-7 sm:p-8">
+                    <Target size={24} className="text-cyan-400" aria-hidden="true" />
+                    <h3 className="mt-5 text-xl font-semibold text-white">Why I am developing it</h3>
+                    <p className="mt-4 text-sm leading-8 text-gray-300">{project.whyBuilding}</p>
+                  </div>
+                )}
+                {project.plannedOutcome && (
+                  <div className="rounded-[1.75rem] border border-cyan-400/15 bg-cyan-400/[0.025] p-7 sm:p-8">
+                    <Rocket size={24} className="text-cyan-400" aria-hidden="true" />
+                    <h3 className="mt-5 text-xl font-semibold text-white">What I plan to achieve</h3>
+                    <p className="mt-4 text-sm leading-8 text-gray-300">{project.plannedOutcome}</p>
+                  </div>
+                )}
+              </div>
+            </ContentSection>
+          )}
 
           {project.problem && <ContentSection reduceMotion={reduceMotion}><SectionHeading number="02" label="Problem" title="The challenge" /><div className="mt-8 rounded-[2rem] border border-white/[0.08] bg-white/[0.025] p-7 sm:p-10"><p className="text-base leading-8 text-gray-300">{project.problem}</p></div></ContentSection>}
 
           {approach.length > 0 && <ContentSection reduceMotion={reduceMotion}><SectionHeading number="03" label="Engineering Approach" title="How I approached it" /><ol className="mt-8 grid gap-4 md:grid-cols-2">{approach.map((step, index) => <li key={`${index}-${step}`} className="flex gap-4 rounded-2xl border border-white/[0.07] bg-white/[0.02] p-5"><span aria-hidden="true" className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-cyan-400/20 text-xs font-bold text-cyan-300">{String(index + 1).padStart(2, "0")}</span><p className="text-sm leading-7 text-gray-300">{step}</p></li>)}</ol></ContentSection>}
 
-          {pipeline.length > 0 && <ContentSection reduceMotion={reduceMotion}><SectionHeading number="04" label="Workflow" title="Development pipeline" /><ol className="mt-8 flex flex-wrap items-center gap-2 rounded-[2rem] border border-white/[0.08] bg-white/[0.02] p-6 sm:p-8">{pipeline.map((step, index) => <li key={`${index}-${step}`} className="flex items-center gap-2"><div className="rounded-xl border border-white/[0.08] bg-black/30 px-4 py-3"><p className="text-xs text-gray-400">Step {String(index + 1).padStart(2, "0")}</p><p className="mt-1 text-sm font-medium text-gray-200">{step}</p></div>{index < pipeline.length - 1 && <ArrowRight size={14} className="text-gray-500" aria-hidden="true" />}</li>)}</ol></ContentSection>}
+          {pipeline.length > 0 && <ContentSection reduceMotion={reduceMotion}><SectionHeading number="04" label="Workflow" title="Development workflow & roadmap" /><ol className="mt-8 flex flex-wrap items-center gap-2 rounded-[2rem] border border-white/[0.08] bg-white/[0.02] p-6 sm:p-8">{pipeline.map((step, index) => <li key={`${index}-${step}`} className="flex items-center gap-2"><div className="rounded-xl border border-white/[0.08] bg-black/30 px-4 py-3"><p className="text-xs text-gray-400">Step {String(index + 1).padStart(2, "0")}</p><p className="mt-1 text-sm font-medium text-gray-200">{step}</p></div>{index < pipeline.length - 1 && <ArrowRight size={14} className="text-gray-500" aria-hidden="true" />}</li>)}</ol></ContentSection>}
 
           {project.model && <ContentSection reduceMotion={reduceMotion}><SectionHeading number="05" label="Machine Learning" title="Selected model or approach" /><div className="mt-8 grid gap-4 md:grid-cols-3">{[{ label: "Model / System", value: project.model.name, icon: BrainCircuit }, { label: "Task", value: project.model.type, icon: Layers3 }, { label: "Target", value: project.model.target, icon: Target }].filter((item) => item.value).map((item) => { const Icon = item.icon; return <div key={item.label} className="rounded-[1.5rem] border border-white/[0.08] bg-white/[0.025] p-6"><Icon size={22} className="text-cyan-400" aria-hidden="true" /><p className="mt-5 text-xs uppercase tracking-[0.12em] text-gray-400">{item.label}</p><p className="mt-2 text-lg font-semibold text-white">{item.value}</p></div>; })}</div>{project.model.note && <p className="mt-5 text-sm leading-7 text-gray-300">{project.model.note}</p>}</ContentSection>}
 

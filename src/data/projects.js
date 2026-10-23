@@ -5,6 +5,9 @@ const projects = [
   // ============================================================
   {
     id: "fraudguard-ai",
+    developmentStatus: "Functional MVP — Ongoing Development",
+    whyBuilding: "To make practical fraud-risk analysis more accessible and help teams prioritize suspicious mobile-money transactions.",
+    plannedOutcome: "Improve model validation, strengthen monitoring and security, and develop a reliable fraud-detection platform suitable for real operational testing.",
 
     title: "FraudGuard AI",
 
@@ -250,6 +253,9 @@ const projects = [
   // ============================================================
   {
     id: "resume-screening",
+    developmentStatus: "Deployed Prototype — Ongoing Improvement",
+    whyBuilding: "To explore how NLP can reduce repetitive resume-review work while keeping recruitment decisions under human oversight.",
+    plannedOutcome: "Improve fairness, model quality, explainability, and candidate-job matching before any real-world hiring use.",
 
     title: "Resume Screening AI",
 
@@ -502,6 +508,9 @@ const projects = [
   // ============================================================
   {
     id: "airline-satisfaction",
+    developmentStatus: "Deployed Prototype — Ongoing Improvement",
+    whyBuilding: "To understand which passenger-experience factors are associated with airline satisfaction and demonstrate practical predictive analytics.",
+    plannedOutcome: "Expand interpretability, improve validation on new data, and help airlines make evidence-informed service improvements.",
 
     title: "Airline Customer Satisfaction Prediction",
 
@@ -543,7 +552,6 @@ const projects = [
 
     image: "/projects/airline-satisfaction.webp",
 
-    // Add the confirmed repository URL when available.
     github: "https://github.com/Inda-Obanyi/airline-satisfaction-ai",
 
     demo: "https://airline-satisfaction-ai.streamlit.app/",
@@ -728,6 +736,9 @@ const projects = [
   // ============================================================
   {
     id: "floodguard-ai",
+    developmentStatus: "MVP — Under Development",
+    whyBuilding: "To address the difficulty many Nigerian communities face in accessing understandable flood-risk and emergency-preparedness information.",
+    plannedOutcome: "Integrate reliable environmental data, validate predictive models, and make alerts and guidance accessible through web, SMS, USSD, and WhatsApp.",
 
     title: "FloodGuard AI",
 
@@ -850,6 +861,258 @@ const projects = [
       "How AI-assisted interfaces can make technical information easier to understand.",
       "Why an MVP should distinguish current capabilities from proposed features.",
       "How prototype development can guide future predictive-system architecture.",
+    ],
+  },
+
+  // ============================================================
+  // 5. YAQINI & DUNIYA TECHNOLOGY
+  // ============================================================
+  {
+    id: "yaqini-duniya-technology",
+    title: "Yaqini & Duniya Technology",
+    category: "Technology Venture / AI Products / Software Engineering",
+    status: "Under Development",
+    developmentStatus: "Under Development",
+    evidence: {
+      evaluationStatus: "Company platform and product ecosystem in development",
+      evaluationNotes:
+        "This is an ongoing technology venture and product-development initiative, not a completed or independently validated commercial platform.",
+      deploymentStatus: "Under Development",
+    },
+    shortDescription:
+      "Building a technology company focused on practical AI, intelligent software, and digital products that address real-world challenges.",
+    description:
+      "Yaqini & Duniya Technology is the technology venture through which I am developing and organizing AI-powered applications, software platforms, and digital solutions. The goal is to turn technical experimentation into useful, responsibly developed products for people, businesses, education, and communities, with particular attention to opportunities in Nigeria and Africa.",
+    whyBuilding:
+      "I want to build more than isolated technical demonstrations: a sustainable organization that can develop useful products, collaborate with partners, and turn locally relevant problems into scalable technology solutions.",
+    plannedOutcome:
+      "Establish a credible technology brand, build and validate a portfolio of AI and software products, serve real users, develop partnerships, and grow into a sustainable innovation-driven company.",
+    technologies: [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Python",
+      "FastAPI",
+      "React",
+      "Next.js",
+      "Cloud Platforms",
+      "Product Development",
+    ],
+    image: "/projects/yaqini-duniya-technology.webp",
+    github: "",
+    demo: "",
+    featured: true,
+    problem:
+      "Promising digital ideas often struggle to progress from prototypes to useful, maintainable products, especially when teams need engineering capacity, market validation, and a coherent product strategy.",
+    approach: [
+      "Define the company's product mission and technology focus.",
+      "Develop and iterate on AI and software prototypes.",
+      "Build a coherent web presence and product identity.",
+      "Validate product needs with prospective users and partners.",
+      "Strengthen engineering, security, and deployment practices.",
+      "Pursue collaboration, funding, and sustainable product delivery.",
+    ],
+    pipeline: [
+      "Vision and Product Strategy",
+      "Problem Discovery",
+      "Prototype Development",
+      "User Validation",
+      "Engineering and Security",
+      "Deployment",
+      "Partnerships",
+      "Product Growth",
+    ],
+    model: {
+      name: "AI and Software Product Ecosystem",
+      type: "Technology Venture",
+      target: "Useful, scalable digital products",
+    },
+    evaluation: {
+      metrics: ["Product Readiness", "User Validation", "Reliability", "Adoption"],
+      focus: "Development progress and product-market validation are ongoing; commercial impact has not been established.",
+    },
+    metrics: [],
+    highlights: [
+      "Founder-led technology venture",
+      "AI and software product development",
+      "Nigeria- and Africa-relevant innovation",
+      "Responsible product engineering",
+      "Partnership and growth roadmap",
+    ],
+    results:
+      "The venture is under active development. Its current value is demonstrated through ongoing product-building work; broader adoption and commercial outcomes remain future objectives.",
+    lessonsLearned: [
+      "Building products requires user discovery as well as engineering.",
+      "Technical prototypes need validation before commercial claims.",
+      "Reliable delivery depends on security, maintenance, and clear priorities.",
+    ],
+  },
+
+  // ============================================================
+  // 6. NEXUS
+  // ============================================================
+  {
+    id: "nexus",
+    title: "Nexus",
+    category: "EdTech / AI-Assisted Teaching / Learning Platform",
+    status: "Under Development",
+    developmentStatus: "Under Development",
+    evidence: {
+      evaluationStatus: "Curriculum-content and platform development ongoing",
+      evaluationNotes:
+        "Curriculum coverage, lesson-note quality, visual aids, and classroom usability are still being expanded and reviewed. No independent educational-outcome evaluation is claimed.",
+      deploymentStatus: "Under Development",
+    },
+    shortDescription:
+      "An education platform being developed to help teachers prepare comprehensive curriculum-aligned lessons and learning materials.",
+    description:
+      "Nexus is an education technology project focused on making structured teaching resources easier to prepare and use. Its development includes curriculum-organized topics, expanded lesson notes, visual learning aids, and teaching resources intended to align with Nigerian NERDC curricula and relevant WAEC expectations. Content quality, completeness, and usability are ongoing priorities.",
+    whyBuilding:
+      "Teachers spend substantial time preparing lesson notes and teaching aids, while learners need clear, consistent explanations. I am building Nexus to reduce preparation burdens and support better classroom learning.",
+    plannedOutcome:
+      "Develop a dependable, easy-to-use teaching and learning platform with comprehensive, reviewed curriculum-aligned lesson notes, helpful visual aids, assessment support, and broader subject and class coverage.",
+    technologies: [
+      "Educational Technology",
+      "Artificial Intelligence",
+      "Curriculum Content",
+      "Lesson Planning",
+      "Web Applications",
+      "Content Quality Assurance",
+    ],
+    image: "/projects/nexus.webp",
+    github: "",
+    demo: "",
+    featured: true,
+    problem:
+      "Producing complete, consistent, curriculum-aligned lesson materials across many classes and subjects is time-consuming, and short or incomplete notes can limit their classroom usefulness.",
+    approach: [
+      "Organize subjects and topics by class and term.",
+      "Align lesson structures with relevant Nigerian curriculum expectations.",
+      "Expand short and incomplete lesson notes.",
+      "Add examples, exercises, and suitable visual aids.",
+      "Review generated material for accuracy and teaching suitability.",
+      "Iterate on teacher workflows and learner usability.",
+    ],
+    pipeline: [
+      "Curriculum Mapping",
+      "Topic Coverage",
+      "Lesson-Note Drafting",
+      "Content Expansion",
+      "Visual Aids",
+      "Quality Review",
+      "Teacher Feedback",
+      "Platform Refinement",
+    ],
+    model: {
+      name: "AI-Assisted Curriculum Content Platform",
+      type: "Education Technology",
+      target: "Teachers and learners",
+    },
+    evaluation: {
+      metrics: ["Topic Coverage", "Lesson Completeness", "Content Accuracy", "Usability"],
+      focus: "Curriculum completeness and pedagogical quality remain under review; no measured learning-outcome improvement is claimed.",
+    },
+    metrics: [],
+    highlights: [
+      "Nigerian curriculum focus",
+      "Structured lesson notes",
+      "Class- and term-based topics",
+      "Visual learning aids",
+      "Teacher preparation support",
+      "Content expansion in progress",
+    ],
+    results:
+      "Nexus remains under development, with ongoing expansion and review of lesson content and platform functionality.",
+    lessonsLearned: [
+      "Educational content needs careful review, not just automated generation.",
+      "Useful lesson notes require examples, explanations, and classroom context.",
+      "Curriculum coverage and quality must be measured separately.",
+    ],
+  },
+
+  // ============================================================
+  // 7. INDAVERSE
+  // ============================================================
+  {
+    id: "indaverse",
+    title: "IndaVerse",
+    category: "Agentic AI / Multimodal AI / Software Platform",
+    status: "Under Development",
+    developmentStatus: "Under Development",
+    evidence: {
+      evaluationStatus: "Architecture and application development ongoing",
+      evaluationNotes:
+        "Agent orchestration, multimodal generation, persistent context, and autonomous workflows are development objectives. Production reliability and full feature completeness have not been independently validated.",
+      deploymentStatus: "Under Development",
+    },
+    shortDescription:
+      "An ambitious multimodal, agentic AI platform designed to help users research, create, plan, and build software through coordinated AI workflows.",
+    description:
+      "IndaVerse is a developing AI platform centered on intent understanding, task planning, agent orchestration, model routing, project context, and creative and software-building workflows. The long-term direction is a unified environment where AI can assist with research, writing, code, visual and other creative tasks while preserving continuity across complex projects.",
+    whyBuilding:
+      "Most AI tools address individual tasks in isolation. I am developing IndaVerse to explore a more connected experience in which users can move from an idea to a planned, refined, and usable outcome without repeatedly rebuilding context.",
+    plannedOutcome:
+      "Create a reliable multimodal AI workspace with persistent project context, coordinated specialist agents, model selection, iterative evaluation, creative workflows, and progressively more capable software-generation assistance.",
+    technologies: [
+      "Agentic AI",
+      "Multimodal AI",
+      "Large Language Models",
+      "Python",
+      "FastAPI",
+      "Next.js",
+      "TypeScript",
+      "Agent Orchestration",
+      "Model Routing",
+    ],
+    image: "/projects/indaverse.webp",
+    github: "",
+    demo: "",
+    featured: true,
+    problem:
+      "Complex creative and engineering work often spans multiple tools and sessions, causing fragmented context, repetitive setup, and difficulty coordinating research, planning, generation, and refinement.",
+    approach: [
+      "Design modular foundations for AI-assisted workflows.",
+      "Develop intent understanding and task-planning capabilities.",
+      "Explore agent orchestration and model routing.",
+      "Design persistent project context and memory boundaries.",
+      "Support iterative generation, evaluation, and refinement.",
+      "Strengthen security, observability, and reliability before broader release.",
+    ],
+    pipeline: [
+      "Core Architecture",
+      "Intent Understanding",
+      "Planning",
+      "Agent Coordination",
+      "Model Routing",
+      "Project Context",
+      "Generation",
+      "Evaluation and Refinement",
+      "Reliability Testing",
+    ],
+    model: {
+      name: "Multimodal Agentic AI Platform",
+      type: "AI Application Platform",
+      target: "Research, creation, and software-building workflows",
+    },
+    evaluation: {
+      metrics: ["Workflow Completion", "Output Quality", "Reliability", "Latency", "Safety"],
+      focus: "The architecture and workflows are evolving; production-scale performance and autonomous execution claims require validation.",
+    },
+    metrics: [],
+    highlights: [
+      "Multimodal AI vision",
+      "Agent orchestration",
+      "Intent-aware planning",
+      "Model routing",
+      "Persistent project context",
+      "Generation and refinement loops",
+      "AI-assisted software creation",
+    ],
+    results:
+      "IndaVerse is an active development project. Its advanced autonomous and multimodal capabilities are roadmap goals, not claims of a completed production platform.",
+    lessonsLearned: [
+      "Complex AI workflows benefit from modular architecture.",
+      "Agentic systems need evaluation, safety boundaries, and observability.",
+      "Persistent context should be designed with privacy and reliability in mind.",
     ],
   },
 ];
