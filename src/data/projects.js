@@ -948,89 +948,66 @@ const projects = [
   },
 
   // ============================================================
-  // 6. NEXUS
+  // ============================================================
+  // 6. TEACHERS HANDBOOK
   // ============================================================
   {
-    id: "nexus",
-    title: "Nexus",
-    category: "EdTech / AI-Assisted Teaching / Learning Platform",
+    id: "teachers-handbook",
+    title: "Teachers Handbook",
+    category: "EdTech / AI-Assisted Teaching / Nigerian Curriculum",
     status: "Under Development",
-    developmentStatus: "Under Development",
-    evidence: {
-      evaluationStatus: "Curriculum-content and platform development ongoing",
-      evaluationNotes:
-        "Curriculum coverage, lesson-note quality, visual aids, and classroom usability are still being expanded and reviewed. No independent educational-outcome evaluation is claimed.",
-      deploymentStatus: "Under Development",
-    },
-    shortDescription:
-      "An education platform being developed to help teachers prepare comprehensive curriculum-aligned lessons and learning materials.",
-    description:
-      "Nexus is an education technology project focused on making structured teaching resources easier to prepare and use. Its development includes curriculum-organized topics, expanded lesson notes, visual learning aids, and teaching resources intended to align with Nigerian NERDC curricula and relevant WAEC expectations. Content quality, completeness, and usability are ongoing priorities.",
-    whyBuilding:
-      "Teachers spend substantial time preparing lesson notes and teaching aids, while learners need clear, consistent explanations. I am building Nexus to reduce preparation burdens and support better classroom learning.",
-    plannedOutcome:
-      "Develop a dependable, easy-to-use teaching and learning platform with comprehensive, reviewed curriculum-aligned lesson notes, helpful visual aids, assessment support, and broader subject and class coverage.",
-    technologies: [
-      "Educational Technology",
-      "Artificial Intelligence",
-      "Curriculum Content",
-      "Lesson Planning",
-      "Web Applications",
-      "Content Quality Assurance",
-    ],
+    developmentStatus: "Curriculum Expansion and Quality Review",
+    whyBuilding: "To reduce teachers' preparation workload while making thorough, classroom-ready teaching resources more accessible across Nigerian schools.",
+    plannedOutcome: "Deliver a comprehensive, teacher-reviewed NERDC-aligned lesson library across classes, subjects and terms, with WAEC-relevant preparation, visual aids, exercises, assessments and printable teaching resources.",
+    shortDescription: "A Nigerian curriculum-focused teaching companion with structured lesson notes, visual aids, exercises and assessment resources.",
+    description: "Teachers Handbook is an education technology platform being developed to help Nigerian teachers plan and deliver complete, engaging lessons. It organizes subjects and termly topics into structured lesson notes with clear explanations, worked examples, visual teaching aids, classroom activities and assessment questions. Its development prioritizes closing missing-topic gaps, expanding notes that are too short and checking curriculum accuracy and classroom usefulness.",
+    technologies: ["Educational Technology", "Artificial Intelligence", "Curriculum Mapping", "Lesson Planning", "Content Quality Assurance", "Web Applications"],
     image: "/projects/nexus.webp",
     github: "",
     demo: "",
     featured: true,
-    problem:
-      "Producing complete, consistent, curriculum-aligned lesson materials across many classes and subjects is time-consuming, and short or incomplete notes can limit their classroom usefulness.",
-    approach: [
-      "Organize subjects and topics by class and term.",
-      "Align lesson structures with relevant Nigerian curriculum expectations.",
-      "Expand short and incomplete lesson notes.",
-      "Add examples, exercises, and suitable visual aids.",
-      "Review generated material for accuracy and teaching suitability.",
-      "Iterate on teacher workflows and learner usability.",
-    ],
-    pipeline: [
-      "Curriculum Mapping",
-      "Topic Coverage",
-      "Lesson-Note Drafting",
-      "Content Expansion",
-      "Visual Aids",
-      "Quality Review",
-      "Teacher Feedback",
-      "Platform Refinement",
-    ],
-    model: {
-      name: "AI-Assisted Curriculum Content Platform",
-      type: "Education Technology",
-      target: "Teachers and learners",
-    },
-    evaluation: {
-      metrics: ["Topic Coverage", "Lesson Completeness", "Content Accuracy", "Usability"],
-      focus: "Curriculum completeness and pedagogical quality remain under review; no measured learning-outcome improvement is claimed.",
-    },
+    problem: "Teachers need complete, accurate and classroom-ready lesson materials, but preparing them across many subjects, classes and terms is time-consuming. Incomplete or overly brief notes limit their usefulness.",
+    approach: ["Map classes, subjects and termly topics to the applicable Nigerian curriculum.", "Identify missing, short and incomplete lesson notes.", "Expand each topic with objectives, detailed explanations, examples and activities.", "Add suitable visual aids and practice questions.", "Review educational accuracy and curriculum alignment.", "Improve teacher navigation, printing and classroom usability."],
+    pipeline: ["Curriculum Mapping", "Topic Inventory", "Lesson Drafting", "Content Expansion", "Visual Aids", "Exercises and Assessment", "Quality Review", "Teacher Feedback", "Release"],
+    model: {name:"AI-Assisted Teaching Resource Platform",type:"Education Technology",target:"Nigerian teachers and students"},
+    evaluation: {metrics:["Topic Coverage","Lesson Completeness","Curriculum Accuracy","Teacher Usability"],focus:"Curriculum coverage and note quality are still being expanded and reviewed; improved learning outcomes have not yet been independently measured."},
     metrics: [],
-    highlights: [
-      "Nigerian curriculum focus",
-      "Structured lesson notes",
-      "Class- and term-based topics",
-      "Visual learning aids",
-      "Teacher preparation support",
-      "Content expansion in progress",
-    ],
-    results:
-      "Nexus remains under development, with ongoing expansion and review of lesson content and platform functionality.",
-    lessonsLearned: [
-      "Educational content needs careful review, not just automated generation.",
-      "Useful lesson notes require examples, explanations, and classroom context.",
-      "Curriculum coverage and quality must be measured separately.",
-    ],
+    highlights: ["NERDC curriculum alignment", "WAEC-relevant preparation", "Comprehensive lesson notes", "Class and term organization", "Teaching aids", "Worked examples", "Exercises and assessments", "Teacher quality review"],
+    results: "The platform and its lesson library are being expanded. Complete coverage, independently reviewed content and measurable classroom impact remain goals rather than completed achievements.",
+    lessonsLearned: ["Educational AI output requires subject-matter review.", "Completeness and depth matter as much as topic count.", "Practical teacher workflows should guide platform design."]
   },
 
   // ============================================================
-  // 7. INDAVERSE
+  // 7. SMART FARMAI — NEXUS
+  // ============================================================
+  {
+    id: "smart-farmai",
+    title: "Smart FarmAI (NEXUS)",
+    category: "AgriTech / AI / Precision Agriculture",
+    status: "Under Development",
+    developmentStatus: "Product Architecture and MVP Development",
+    whyBuilding: "To help farmers, especially smallholder farmers in Nigeria and Africa, make better decisions using understandable data and practical agricultural intelligence.",
+    plannedOutcome: "Build a farmer-centered platform that combines farm records, crop and soil monitoring, weather-informed recommendations, pest and disease risk assistance, yield forecasting and actionable insights, with offline-friendly access and field validation.",
+    shortDescription: "An intelligent agriculture platform designed to support farm monitoring, crop decisions, resource planning and data-driven productivity.",
+    description: "Smart FarmAI, developed under the NEXUS concept, is a planned intelligent farm-management and decision-support platform. It aims to bring together farm records, weather and environmental information, crop health observations, predictive analytics and easy-to-understand recommendations. The long-term vision is to help farmers identify risks earlier, plan inputs efficiently and improve resilience through locally relevant, validated insights.",
+    technologies: ["Python", "Machine Learning", "FastAPI", "React", "Data Analytics", "Geospatial Data", "Weather Data", "Predictive Modeling"],
+    image: "/projects/smart-farmai.svg",
+    github: "",
+    demo: "",
+    featured: true,
+    problem: "Many farmers lack affordable, timely, localized decision support for crop conditions, weather uncertainty, pest risks, resource use and expected harvests.",
+    approach: ["Research farmers' needs and priority crops.", "Design farm profiles and record-keeping workflows.", "Integrate appropriate weather, soil and crop data sources.", "Prototype advisory and risk-scoring workflows.", "Develop explainable predictive models when suitable data is available.", "Validate recommendations with agricultural experts and farmers.", "Improve mobile accessibility and support low-connectivity use."],
+    pipeline: ["Farmer Research", "Farm Data Model", "MVP", "Data Integration", "Risk Analysis", "Predictive Modeling", "Expert Validation", "Field Pilots", "Scaling"],
+    model: {name:"AI-Assisted Farm Decision Support",type:"Agriculture Technology",target:"Farmers and agricultural advisers"},
+    evaluation: {metrics:["Advisory Accuracy","Farmer Usability","Model Validation","Resource Efficiency","Pilot Adoption"],focus:"Agronomic recommendations and predictive performance require suitable datasets, expert review and field trials; no yield gains or forecasting accuracy are claimed yet."},
+    metrics: [],
+    highlights: ["Farm management", "Crop and soil insights", "Weather-informed planning", "Pest and disease risk roadmap", "Yield forecasting roadmap", "Explainable recommendations", "Smallholder farmer focus", "Offline-friendly access roadmap"],
+    results: "Smart FarmAI is being developed toward an agricultural decision-support MVP. Field-validated recommendations, predictive models and measurable farm outcomes are planned milestones, not current production claims.",
+    lessonsLearned: ["Farm recommendations need local agricultural context.", "Predictive claims require representative field data.", "Farmer accessibility and expert validation are essential."]
+  },
+
+  // ============================================================
+  // 8. INDAVERSE
   // ============================================================
   {
     id: "indaverse",
