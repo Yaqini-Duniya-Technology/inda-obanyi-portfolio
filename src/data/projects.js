@@ -962,7 +962,7 @@ const projects = [
     shortDescription: "A Nigerian curriculum-focused teaching companion with structured lesson notes, visual aids, exercises and assessment resources.",
     description: "Teachers Handbook is an education technology platform being developed to help Nigerian teachers plan and deliver complete, engaging lessons. It organizes subjects and termly topics into structured lesson notes with clear explanations, worked examples, visual teaching aids, classroom activities and assessment questions. Its development prioritizes closing missing-topic gaps, expanding notes that are too short and checking curriculum accuracy and classroom usefulness.",
     technologies: ["Educational Technology", "Artificial Intelligence", "Curriculum Mapping", "Lesson Planning", "Content Quality Assurance", "Web Applications"],
-    image: "/projects/nexus.webp",
+    image: "/projects/teachers-handbook.svg",
     github: "",
     demo: "",
     featured: true,
@@ -982,16 +982,16 @@ const projects = [
   // ============================================================
   {
     id: "smart-farmai",
-    title: "Smart FarmAI (NEXUS)",
+    title: "NEXUS: Autonomous Agricultural Intelligence",
     category: "AgriTech / AI / Precision Agriculture",
     status: "Under Development",
     developmentStatus: "Product Architecture and MVP Development",
     whyBuilding: "To help farmers, especially smallholder farmers in Nigeria and Africa, make better decisions using understandable data and practical agricultural intelligence.",
     plannedOutcome: "Build a farmer-centered platform that combines farm records, crop and soil monitoring, weather-informed recommendations, pest and disease risk assistance, yield forecasting and actionable insights, with offline-friendly access and field validation.",
     shortDescription: "An intelligent agriculture platform designed to support farm monitoring, crop decisions, resource planning and data-driven productivity.",
-    description: "Smart FarmAI, developed under the NEXUS concept, is a planned intelligent farm-management and decision-support platform. It aims to bring together farm records, weather and environmental information, crop health observations, predictive analytics and easy-to-understand recommendations. The long-term vision is to help farmers identify risks earlier, plan inputs efficiently and improve resilience through locally relevant, validated insights.",
+    description: "NEXUS: Autonomous Agricultural Intelligence is a planned intelligent farm-management and decision-support platform. It aims to bring together farm records, weather and environmental information, crop health observations, predictive analytics and easy-to-understand recommendations. The long-term vision is to help farmers identify risks earlier, plan inputs efficiently and improve resilience through locally relevant, validated insights.",
     technologies: ["Python", "Machine Learning", "FastAPI", "React", "Data Analytics", "Geospatial Data", "Weather Data", "Predictive Modeling"],
-    image: "/projects/smart-farmai.svg",
+    image: "/projects/nexus-autonomous-agriculture.svg",
     github: "",
     demo: "",
     featured: true,
@@ -1002,7 +1002,7 @@ const projects = [
     evaluation: {metrics:["Advisory Accuracy","Farmer Usability","Model Validation","Resource Efficiency","Pilot Adoption"],focus:"Agronomic recommendations and predictive performance require suitable datasets, expert review and field trials; no yield gains or forecasting accuracy are claimed yet."},
     metrics: [],
     highlights: ["Farm management", "Crop and soil insights", "Weather-informed planning", "Pest and disease risk roadmap", "Yield forecasting roadmap", "Explainable recommendations", "Smallholder farmer focus", "Offline-friendly access roadmap"],
-    results: "Smart FarmAI is being developed toward an agricultural decision-support MVP. Field-validated recommendations, predictive models and measurable farm outcomes are planned milestones, not current production claims.",
+    results: "NEXUS is being developed toward an agricultural decision-support MVP. Field-validated recommendations, predictive models and measurable farm outcomes are planned milestones, not current production claims.",
     lessonsLearned: ["Farm recommendations need local agricultural context.", "Predictive claims require representative field data.", "Farmer accessibility and expert validation are essential."]
   },
 
