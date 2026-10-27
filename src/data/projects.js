@@ -48,7 +48,13 @@ const projects = [
     image: "/projects/fraudguard-ai.webp",
 
     github:
-      "https://github.com/Inda-Obanyi/mobile-money-fraud-prediction",
+      "https://github.com/Yaqini-Duniya-Technology/mobile-money-fraud-prediction",
+    engineeringEvidence: [
+      { label: "Architecture & limitations", url: "https://github.com/Yaqini-Duniya-Technology/mobile-money-fraud-prediction/blob/main/docs/ARCHITECTURE.md" },
+      { label: "Automated feature, package & API checks", url: "https://github.com/Yaqini-Duniya-Technology/mobile-money-fraud-prediction/actions/workflows/fraudguard-ci.yml" },
+      { label: "Python syntax workflow", url: "https://github.com/Yaqini-Duniya-Technology/mobile-money-fraud-prediction/actions/workflows/ci.yml" },
+      { label: "Reviewed experimental API changes", url: "https://github.com/Yaqini-Duniya-Technology/mobile-money-fraud-prediction/pull/1" },
+    ],
 
     demo: "https://fraudguard-streamlit.onrender.com/",
 
@@ -984,15 +990,20 @@ const projects = [
     id: "smart-farmai",
     title: "NEXUS: Autonomous Agricultural Intelligence",
     category: "AgriTech / AI / Precision Agriculture",
-    status: "Under Development",
-    developmentStatus: "Product Architecture and MVP Development",
+    status: "Simulation-Validated MVP",
+    developmentStatus: "Simulation-Validated Technical MVP — Field Validation Pending",
     whyBuilding: "To help farmers, especially smallholder farmers in Nigeria and Africa, make better decisions using understandable data and practical agricultural intelligence.",
     plannedOutcome: "Build a farmer-centered platform that combines farm records, crop and soil monitoring, weather-informed recommendations, pest and disease risk assistance, yield forecasting and actionable insights, with offline-friendly access and field validation.",
-    shortDescription: "An intelligent agriculture platform designed to support farm monitoring, crop decisions, resource planning and data-driven productivity.",
-    description: "NEXUS: Autonomous Agricultural Intelligence is a planned intelligent farm-management and decision-support platform. It aims to bring together farm records, weather and environmental information, crop health observations, predictive analytics and easy-to-understand recommendations. The long-term vision is to help farmers identify risks earlier, plan inputs efficiently and improve resilience through locally relevant, validated insights.",
+    shortDescription: "A simulation-tested agricultural decision system connecting farm observations, action selection, spatial execution and outcome evidence; real-farm pilots are pending.",
+    description: "NEXUS currently demonstrates a simulation-validated autonomous decision-to-outcome loop, including structured farm state, candidate action scoring, persistent spatial execution intent, target-level outcome checks and experience memory. The repository reports a reproducible 720-step episode with 719 decisions, 719 experiences, 82 verified simulated harvests and a 324-test regression baseline. Field data, farmer adoption and agronomic impact remain unvalidated.",
     technologies: ["Python", "Machine Learning", "FastAPI", "React", "Data Analytics", "Geospatial Data", "Weather Data", "Predictive Modeling"],
     image: "/projects/nexus-autonomous-agriculture.svg",
-    github: "",
+    github: "https://github.com/Yaqini-Duniya-Technology/nexus-intelligent-farm",
+    engineeringEvidence: [
+      { label: "Architecture & decision boundaries", url: "https://github.com/Yaqini-Duniya-Technology/nexus-intelligent-farm/blob/master/docs/ARCHITECTURE.md" },
+      { label: "Reproducible demo & reported simulation metrics", url: "https://github.com/Yaqini-Duniya-Technology/nexus-intelligent-farm#validated-mvp-results" },
+      { label: "Automated Python tests", url: "https://github.com/Yaqini-Duniya-Technology/nexus-intelligent-farm/actions/workflows/ci.yml" },
+    ],
     demo: "",
     featured: true,
     problem: "Many farmers lack affordable, timely, localized decision support for crop conditions, weather uncertainty, pest risks, resource use and expected harvests.",
