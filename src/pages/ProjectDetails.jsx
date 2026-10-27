@@ -139,6 +139,7 @@ function ProjectDetails() {
                 <div className="mt-8 flex flex-wrap gap-3">
                   <ExternalAction href={project.demo} primary>View Demo</ExternalAction>
                   <ExternalAction href={project.github}>GitHub Repository</ExternalAction>
+                  {list(project.engineeringEvidence).map((item) => <ExternalAction key={item.url} href={item.url}>{item.label}</ExternalAction>)}
                 </div>
                 {technologies.length > 0 && (
                   <ul aria-label="Technology stack" className="mt-8 flex flex-wrap gap-2">
