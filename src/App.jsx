@@ -11,6 +11,7 @@ import WhatsAppButton from "./components/WhatsAppButton";
 const Home = lazy(() => import("./pages/Home"));
 const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
 const ProjectDetails = lazy(() => import("./pages/ProjectDetails"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 /* ============================================================
    PAGE LOADING FALLBACK
@@ -61,6 +62,7 @@ function App() {
             path="/projects/:id"
             element={<ProjectDetails />}
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
 
