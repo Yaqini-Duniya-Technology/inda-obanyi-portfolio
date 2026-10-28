@@ -34,9 +34,8 @@ async function main() {
     for (const violation of result.violations) {
       console.log(`A11Y ${label}: [${violation.impact}] ${violation.id} — ${violation.help}; elements: ${violation.nodes.map(n => n.target.join(" ")).join(", ")}`);
     }
-    const critical = result.violations.filter(v => v.impact === "critical");
-    if (critical.length) errors.push(`${label}: critical accessibility findings: ${critical.map(v => v.id).join(", ")}`);
-    console.log(`Accessibility ${label}: ${result.violations.length} findings, ${critical.length} critical`);
+    if (result.violations.length) errors.push(`${label}: accessibility findings: ${result.violations.map(v => v.id).join(", ")}`);
+    console.log(`Accessibility ${label}: ${result.violations.length} findings`);
   }
   page.on("pageerror", err => errors.push(err.message));
   await page.goto(host, { waitUntil: "domcontentloaded" });
@@ -56,6 +55,19 @@ async function main() {
   await page.getByRole("heading", { level: 1, name: /NEXUS/i }).waitFor();
   await page.getByRole("link", { name: /Automated Python tests/i }).waitFor();
   await audit("nexus-mobile");
+  await page.setViewportSize({ width: 1280, height: 800 });
+  for (const [route, label] of [["/", "home-desktop"], ["/projects", "projects-desktop"], ["/projects/fraudguard-ai", "fraudguard-desktop"], ["/projects/smart-farmai", "nexus-desktop"]]) {
+    await page.goto(host + route, { waitUntil: "domcontentloaded" });
+    await page.locator("#main-content").waitFor();
+    await audit(label);
+  }
+  await page.goto(host, { waitUntil: "domcontentloaded" });
+  await page.keyboard.press("Tab");
+  const focused = await page.evaluate(() => document.activeElement?.textContent?.trim());
+  if (focused !== "Skip to main content") errors.push("Keyboard tab must focus skip link first");
+  await page.keyboard.press("Enter");
+  const target = await page.evaluate(() => location.hash);
+  if (target !== "#main-content") errors.push("Skip link does not target main content");
   for (const width of [390, 768, 1280]) {
     await page.setViewportSize({ width, height: 800 });
     await page.goto(host + "/projects", { waitUntil: "domcontentloaded" });
