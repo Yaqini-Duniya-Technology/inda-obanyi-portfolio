@@ -23,7 +23,7 @@ function Home() {
           MAIN CONTENT
       ====================================================== */}
 
-      <main>
+      <main id="main-content" tabIndex={-1}>
 
         {/* Hero */}
         <Hero />
