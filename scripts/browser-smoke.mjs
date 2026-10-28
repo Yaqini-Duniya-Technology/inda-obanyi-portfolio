@@ -1,5 +1,8 @@
 import { chromium } from "playwright";
 import { spawn } from "node:child_process";
+import { mkdirSync, writeFileSync } from "node:fs";
+import { createRequire } from "node:module";
+const require = createRequire(import.meta.url);
 
 const host = "http://127.0.0.1:4173";
 const server = spawn(process.execPath, ["node_modules/vite/bin/vite.js", "preview", "--host", "127.0.0.1", "--port", "4173", "--strictPort"], { stdio: "ignore", windowsHide: true });
@@ -18,26 +21,42 @@ async function main() {
   page.setDefaultTimeout(10000);
   page.setDefaultNavigationTimeout(15000);
   const errors = [];
+  const audits = [];
+  mkdirSync("test-artifacts", { recursive: true });
+  async function audit(label) {
+    await page.addScriptTag({ path: require.resolve("axe-core/axe.min.js") });
+    const result = await page.evaluate(async () => window.axe.run(document, { runOnly: { type: "tag", values: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"] } }));
+    audits.push({ page: label, violations: result.violations.map(v => ({ id: v.id, impact: v.impact, description: v.description, nodes: v.nodes.length })) });
+    const critical = result.violations.filter(v => v.impact === "critical");
+    if (critical.length) errors.push(`${label}: critical accessibility findings: ${critical.map(v => v.id).join(", ")}`);
+    console.log(`Accessibility ${label}: ${result.violations.length} findings, ${critical.length} critical`);
+  }
   page.on("pageerror", err => errors.push(err.message));
   await page.goto(host, { waitUntil: "domcontentloaded" });
   await page.getByRole("button", { name: "Open navigation menu" }).click();
+  await page.screenshot({ path: "test-artifacts/mobile-menu.png", fullPage: false });
   await page.getByRole("button", { name: "Close navigation menu" }).waitFor();
   await page.keyboard.press("Escape");
   await page.getByRole("button", { name: "Open navigation menu" }).waitFor();
   const skip = page.getByRole("link", { name: "Skip to main content" });
   if (await skip.count() !== 1) throw new Error("Skip link missing");
+  await audit("home-mobile");
   await page.goto(host + "/projects/fraudguard-ai", { waitUntil: "domcontentloaded" });
   await page.getByRole("heading", { level: 1, name: /FraudGuard AI/i }).waitFor();
   await page.getByRole("link", { name: /Architecture & limitations/i }).waitFor();
+  await audit("fraudguard-mobile");
   await page.goto(host + "/projects/smart-farmai", { waitUntil: "domcontentloaded" });
   await page.getByRole("heading", { level: 1, name: /NEXUS/i }).waitFor();
   await page.getByRole("link", { name: /Automated Python tests/i }).waitFor();
+  await audit("nexus-mobile");
   for (const width of [390, 768, 1280]) {
     await page.setViewportSize({ width, height: 800 });
     await page.goto(host + "/projects", { waitUntil: "domcontentloaded" });
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 2);
     if (overflow) throw new Error("Horizontal overflow on projects at " + width + "px");
+    if (width === 1280) await page.screenshot({ path: "test-artifacts/projects-desktop.png", fullPage: false });
   }
+  writeFileSync("test-artifacts/accessibility-results.json", JSON.stringify(audits, null, 2));
   if (errors.length) throw new Error("Browser errors: " + errors.join("; "));
   console.log("Browser smoke checks passed: mobile navigation, project evidence and layouts");
 }
