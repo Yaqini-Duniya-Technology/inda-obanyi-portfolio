@@ -26,7 +26,14 @@ async function main() {
   async function audit(label) {
     await page.addScriptTag({ path: require.resolve("axe-core/axe.min.js") });
     const result = await page.evaluate(async () => window.axe.run(document, { runOnly: { type: "tag", values: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"] } }));
-    audits.push({ page: label, violations: result.violations.map(v => ({ id: v.id, impact: v.impact, description: v.description, nodes: v.nodes.length })) });
+    audits.push({ page: label, violations: result.violations.map(v => ({
+      id: v.id, impact: v.impact, description: v.description, help: v.help,
+      helpUrl: v.helpUrl,
+      nodes: v.nodes.map(n => ({ target: n.target, failureSummary: n.failureSummary }))
+    })) });
+    for (const violation of result.violations) {
+      console.log(`A11Y ${label}: [${violation.impact}] ${violation.id} — ${violation.help}; elements: ${violation.nodes.map(n => n.target.join(" ")).join(", ")}`);
+    }
     const critical = result.violations.filter(v => v.impact === "critical");
     if (critical.length) errors.push(`${label}: critical accessibility findings: ${critical.map(v => v.id).join(", ")}`);
     console.log(`Accessibility ${label}: ${result.violations.length} findings, ${critical.length} critical`);
