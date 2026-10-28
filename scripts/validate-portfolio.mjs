@@ -78,6 +78,14 @@ for (const id of ["fraudguard-ai", "smart-farmai"]) {
     note(`${id}: missing verified evidence links`);
   }
 }
+const sitemap = readFileSync(path.join(dist, "sitemap.xml"), "utf8");
+for (const id of ids) {
+  const expected = `https://indaobanyi.vercel.app/projects/${id}</loc>`;
+  if (!sitemap.includes(expected)) note(`Missing sitemap URL for ${id}`);
+}
+if (!sitemap.includes("https://indaobanyi.vercel.app/projects</loc>")) {
+  note("Missing projects index in sitemap");
+}
 for (const route of config.rewrites || []) {
   if (route.source === "/(.*)") continue;
   if (route.destination.startsWith("/projects/")) {
