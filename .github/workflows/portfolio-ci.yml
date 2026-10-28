@@ -1,0 +1,51 @@
+name: Portfolio build and route checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install exact dependencies
+        run: npm ci
+      - name: Build Vite application and SEO pages
+        run: npm run build
+      - name: Verify generated project routes and evidence
+        run: |
+          node --input-type=module <<'NODE'
+          import { existsSync, readFileSync } from 'node:fs';
+          import projects from './src/data/projects.js';
+          const ids = ['fraudguard-ai', 'smart-farmai'];
+          for (const id of ids) {
+            if (!projects.some(project => project.id === id)) {
+              throw new Error('Missing project in data: ' + id);
+            }
+            const file = 'dist/projects/' + id + '/index.html';
+            if (!existsSync(file)) {
+              throw new Error('Missing generated route: ' + file);
+            }
+            const html = readFileSync(file, 'utf8');
+            if (!html.includes('canonical') || !html.includes('/projects/' + id)) {
+              throw new Error('Missing canonical metadata for ' + id);
+            }
+            const entry = projects.find(p => p.id === id);
+            if (!entry.github || !entry.engineeringEvidence?.length) {
+              throw new Error('Missing source / evidence links: ' + id);
+            }
+            console.log('Verified', id);
+          }
+          NODE
