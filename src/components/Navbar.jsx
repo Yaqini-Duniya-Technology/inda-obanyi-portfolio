@@ -122,6 +122,15 @@ const handleNavigation = (href) => {
     setMobileOpen(false);
   }, [location.pathname, location.hash]);
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") setMobileOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [mobileOpen]);
+
   const isActive = (href) => {
     if (href === "/") {
       return location.pathname === "/" && !location.hash;
@@ -224,6 +233,7 @@ const handleNavigation = (href) => {
               : "Open navigation menu"
           }
           aria-expanded={mobileOpen}
+          aria-controls="mobile-site-navigation"
           onClick={() =>
             setMobileOpen((previous) => !previous)
           }
@@ -239,7 +249,7 @@ const handleNavigation = (href) => {
 
       {/* Mobile navigation */}
       {mobileOpen && (
-        <div className="border-t border-white/[0.07] bg-black/95 px-6 pb-7 pt-5 backdrop-blur-2xl lg:hidden">
+        <div id="mobile-site-navigation" className="border-t border-white/[0.07] bg-black/95 px-6 pb-7 pt-5 backdrop-blur-2xl lg:hidden">
           <div className="mx-auto max-w-7xl">
 
             <div className="mb-5 flex items-center gap-3 border-b border-white/[0.07] pb-5 sm:hidden">
