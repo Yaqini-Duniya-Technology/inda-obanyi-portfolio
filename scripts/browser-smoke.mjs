@@ -15,24 +15,26 @@ async function main() {
   await waitForServer();
   browser = await chromium.launch({ headless: true });
   const page = await browser.newPage({ viewport: { width: 390, height: 844 }, reducedMotion: "reduce" });
+  page.setDefaultTimeout(10000);
+  page.setDefaultNavigationTimeout(15000);
   const errors = [];
   page.on("pageerror", err => errors.push(err.message));
-  await page.goto(host, { waitUntil: "networkidle" });
+  await page.goto(host, { waitUntil: "domcontentloaded" });
   await page.getByRole("button", { name: "Open navigation menu" }).click();
   await page.getByRole("button", { name: "Close navigation menu" }).waitFor();
   await page.keyboard.press("Escape");
   await page.getByRole("button", { name: "Open navigation menu" }).waitFor();
   const skip = page.getByRole("link", { name: "Skip to main content" });
   if (await skip.count() !== 1) throw new Error("Skip link missing");
-  await page.goto(host + "/projects/fraudguard-ai", { waitUntil: "networkidle" });
+  await page.goto(host + "/projects/fraudguard-ai", { waitUntil: "domcontentloaded" });
   await page.getByRole("heading", { level: 1, name: /FraudGuard AI/i }).waitFor();
   await page.getByRole("link", { name: /Architecture & limitations/i }).waitFor();
-  await page.goto(host + "/projects/smart-farmai", { waitUntil: "networkidle" });
+  await page.goto(host + "/projects/smart-farmai", { waitUntil: "domcontentloaded" });
   await page.getByRole("heading", { level: 1, name: /NEXUS/i }).waitFor();
   await page.getByRole("link", { name: /Automated Python tests/i }).waitFor();
   for (const width of [390, 768, 1280]) {
     await page.setViewportSize({ width, height: 800 });
-    await page.goto(host + "/projects", { waitUntil: "networkidle" });
+    await page.goto(host + "/projects", { waitUntil: "domcontentloaded" });
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 2);
     if (overflow) throw new Error("Horizontal overflow on projects at " + width + "px");
   }
