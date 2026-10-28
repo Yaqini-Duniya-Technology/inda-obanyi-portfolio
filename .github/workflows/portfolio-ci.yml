@@ -24,6 +24,8 @@ jobs:
         run: npm ci
       - name: Build Vite application and SEO pages
         run: npm run build
+      - name: Validate routes, assets, links and metadata
+        run: node scripts/validate-portfolio.mjs
       - name: Verify generated project routes and evidence
         run: |
           node --input-type=module <<'NODE'
