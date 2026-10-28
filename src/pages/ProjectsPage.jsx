@@ -42,7 +42,7 @@ function ProjectsPage() {
 
         <Link
           to="/#projects"
-          className="group inline-flex items-center gap-2 text-sm font-medium text-gray-500 transition hover:text-cyan-300"
+          className="group inline-flex items-center gap-2 text-sm font-medium text-gray-300 transition hover:text-cyan-300"
         >
           <ArrowLeft
             size={15}
@@ -69,12 +69,12 @@ function ProjectsPage() {
 
             <h1 className="mt-5 text-5xl font-bold tracking-[-0.045em] sm:text-6xl lg:text-7xl">
               Ideas turned into
-              <span className="block text-gray-500">
+              <span className="block text-gray-300">
                 working systems.
               </span>
             </h1>
 
-            <p className="mt-7 max-w-2xl text-base leading-8 text-gray-400 sm:text-lg">
+            <p className="mt-7 max-w-2xl text-base leading-8 text-gray-300 sm:text-lg">
               A collection of machine learning, AI, data science,
               and software projects built around practical problems,
               technical experimentation, and usable applications.
@@ -92,7 +92,7 @@ function ProjectsPage() {
                 {projects.length}
               </p>
 
-              <p className="mt-1 text-[10px] uppercase tracking-[0.15em] text-gray-600">
+              <p className="mt-1 text-[10px] uppercase tracking-[0.15em] text-gray-300">
                 Projects
               </p>
             </div>
@@ -107,7 +107,7 @@ function ProjectsPage() {
                 ML
               </p>
 
-              <p className="mt-1 text-[10px] uppercase tracking-[0.15em] text-gray-600">
+              <p className="mt-1 text-[10px] uppercase tracking-[0.15em] text-gray-300">
                 Models
               </p>
             </div>
@@ -122,7 +122,7 @@ function ProjectsPage() {
                 E2E
               </p>
 
-              <p className="mt-1 text-[10px] uppercase tracking-[0.15em] text-gray-600">
+              <p className="mt-1 text-[10px] uppercase tracking-[0.15em] text-gray-300">
                 Systems
               </p>
             </div>
@@ -186,7 +186,7 @@ function ProjectsPage() {
                   {featuredProject.title}
                 </h2>
 
-                <p className="mt-5 text-sm leading-7 text-gray-400 sm:text-base">
+                <p className="mt-5 text-sm leading-7 text-gray-300 sm:text-base">
                   {featuredProject.shortDescription ||
                     featuredProject.description}
                 </p>
@@ -198,7 +198,7 @@ function ProjectsPage() {
                       .map((technology) => (
                         <span
                           key={technology}
-                          className="rounded-full border border-white/[0.08] bg-black/20 px-3 py-1.5 text-[11px] text-gray-400"
+                          className="rounded-full border border-white/[0.08] bg-black/20 px-3 py-1.5 text-[11px] text-gray-300"
                         >
                           {technology}
                         </span>
@@ -227,7 +227,7 @@ function ProjectsPage() {
           <section className="mt-20">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-300">
                   Project Archive
                 </p>
 
@@ -236,7 +236,7 @@ function ProjectsPage() {
                 </h2>
               </div>
 
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-300">
                 {remainingProjects.length} additional{" "}
                 {remainingProjects.length === 1
                   ? "project"
@@ -277,7 +277,7 @@ function ProjectsPage() {
                 Let's build something useful.
               </h2>
 
-              <p className="mt-3 max-w-2xl leading-7 text-gray-400">
+              <p className="mt-3 max-w-2xl leading-7 text-gray-300">
                 I'm open to AI/ML opportunities, technical
                 collaborations, and projects focused on solving
                 meaningful real-world problems.
