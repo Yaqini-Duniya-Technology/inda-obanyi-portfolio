@@ -68,6 +68,10 @@ async function main() {
   await page.keyboard.press("Enter");
   const target = await page.evaluate(() => location.hash);
   if (target !== "#main-content") errors.push("Skip link does not target main content");
+  await page.goto(host + "/does-not-exist", { waitUntil: "domcontentloaded" });
+  await page.getByRole("heading", { level: 1, name: "This page does not exist" }).waitFor();
+  await page.getByRole("link", { name: "View projects" }).waitFor();
+  await audit("not-found-desktop");
   for (const width of [390, 768, 1280]) {
     await page.setViewportSize({ width, height: 800 });
     await page.goto(host + "/projects", { waitUntil: "domcontentloaded" });
