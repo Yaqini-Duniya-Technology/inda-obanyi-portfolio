@@ -152,7 +152,7 @@ function Footer() {
                   Inda Obanyi
                 </p>
 
-                <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.22em] text-gray-600">
+                <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.22em] text-gray-400">
                   AI/ML Engineer
                 </p>
               </div>
@@ -163,7 +163,7 @@ function Footer() {
               <span className="text-cyan-400"> for real-world problems.</span>
             </h2>
 
-            <p className="mt-4 max-w-lg text-sm leading-7 text-gray-500">
+            <p className="mt-4 max-w-lg text-sm leading-7 text-gray-300">
               Machine learning, AI engineering, data-driven
               applications, and software built with a focus on
               practical impact.
@@ -203,7 +203,7 @@ function Footer() {
           ================================================== */}
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-600">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-400">
               Navigation
             </p>
 
@@ -218,7 +218,7 @@ function Footer() {
                   onClick={() =>
                     handleNavigation(item.section)
                   }
-                  className="group flex items-center gap-2 text-sm text-gray-500 transition hover:text-cyan-400"
+                  className="group flex items-center gap-2 text-sm text-gray-300 transition hover:text-cyan-400"
                 >
                   {item.label}
 
@@ -233,7 +233,7 @@ function Footer() {
           ================================================== */}
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-600">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-400">
               Connect
             </p>
 
@@ -244,7 +244,7 @@ function Footer() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-2 text-sm text-gray-500 transition hover:text-cyan-400"
+                  className="group flex items-center gap-2 text-sm text-gray-300 transition hover:text-cyan-400"
                 >
                   {link.label}
 
@@ -259,7 +259,7 @@ function Footer() {
                 href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2 text-sm text-gray-500 transition hover:text-cyan-400"
+                className="group flex items-center gap-2 text-sm text-gray-300 transition hover:text-cyan-400"
               >
                 WhatsApp
 
@@ -271,7 +271,7 @@ function Footer() {
 
               <a
                 href={`mailto:${email}`}
-                className="group flex items-center gap-2 text-sm text-gray-500 transition hover:text-cyan-400"
+                className="group flex items-center gap-2 text-sm text-gray-300 transition hover:text-cyan-400"
               >
                 Email
 
@@ -297,11 +297,11 @@ function Footer() {
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
 
           <div>
-            <p className="text-xs text-gray-600">
+            <p className="text-xs text-gray-400">
               © {currentYear} Inda Obanyi. All rights reserved.
             </p>
 
-            <p className="mt-2 text-[11px] text-gray-700">
+            <p className="mt-2 text-[11px] text-gray-400">
               Designed & developed with purpose.
             </p>
           </div>
@@ -317,7 +317,7 @@ function Footer() {
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-400" />
               </span>
 
-              <span className="text-[11px] text-gray-600">
+              <span className="text-[11px] text-gray-400">
                 Open to opportunities
               </span>
             </div>
@@ -329,7 +329,7 @@ function Footer() {
               onClick={handleBackToTop}
               aria-label="Back to top"
               title="Back to top"
-              className="group flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.02] text-gray-500 transition hover:-translate-y-1 hover:border-cyan-400/20 hover:text-cyan-400"
+              className="group flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.02] text-gray-300 transition hover:-translate-y-1 hover:border-cyan-400/20 hover:text-cyan-400"
             >
               <ArrowUp
                 size={15}
