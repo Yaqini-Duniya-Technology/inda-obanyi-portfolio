@@ -24,6 +24,8 @@ jobs:
         run: npm ci
       - name: Build Vite application and SEO pages
         run: npm run build
+      - name: Enforce frontend bundle budget
+        run: node scripts/check-bundle-budget.mjs
       - name: Validate routes, assets, links and metadata
         run: node scripts/validate-portfolio.mjs
       - name: Verify generated project routes and evidence
