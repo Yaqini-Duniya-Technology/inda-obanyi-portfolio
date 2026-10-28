@@ -2,6 +2,7 @@ import { chromium } from "playwright";
 import { spawn } from "node:child_process";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
+import projects from "../src/data/projects.js";
 const require = createRequire(import.meta.url);
 
 const host = "http://127.0.0.1:4173";
@@ -22,6 +23,20 @@ async function main() {
   page.setDefaultNavigationTimeout(15000);
   const errors = [];
   const audits = [];
+  const missingLocalResources = [];
+  page.on("response", response => {
+    if (response.status() >= 400 && response.url().startsWith(host + "/")) {
+      missingLocalResources.push(`${response.status()} ${response.url()}`);
+    }
+  });
+  async function checkVisibleImages(label) {
+    const invalid = await page.locator("img").evaluateAll(async images => {
+      const visible = images.filter(img => img.getClientRects().length > 0);
+      await Promise.all(visible.map(img => img.decode().catch(() => {})));
+      return visible.filter(img => !img.naturalWidth).map(img => img.currentSrc || img.src);
+    });
+    if (invalid.length) errors.push(`${label}: broken visible images: ${invalid.join(", ")}`);
+  }
   mkdirSync("test-artifacts", { recursive: true });
   async function audit(label) {
     await page.addScriptTag({ path: require.resolve("axe-core/axe.min.js") });
@@ -60,6 +75,13 @@ async function main() {
     await page.goto(host + route, { waitUntil: "domcontentloaded" });
     await page.locator("#main-content").waitFor();
     await audit(label);
+    await checkVisibleImages(label);
+  }
+  for (const project of projects) {
+    const response = await page.goto(host + "/projects/" + project.id, { waitUntil: "domcontentloaded" });
+    if (!response?.ok()) errors.push(`Case study HTTP error: ${project.id}: ${response?.status()}`);
+    await page.getByRole("heading", { level: 1, name: project.title, exact: true }).waitFor();
+    await checkVisibleImages(project.id);
   }
   await page.goto(host, { waitUntil: "domcontentloaded" });
   await page.keyboard.press("Tab");
@@ -79,6 +101,7 @@ async function main() {
     if (overflow) throw new Error("Horizontal overflow on projects at " + width + "px");
     if (width === 1280) await page.screenshot({ path: "test-artifacts/projects-desktop.png", fullPage: false });
   }
+  if (missingLocalResources.length) errors.push("Failed local requests: " + [...new Set(missingLocalResources)].join(", "));
   writeFileSync("test-artifacts/accessibility-results.json", JSON.stringify(audits, null, 2));
   if (errors.length) throw new Error("Browser errors: " + errors.join("; "));
   console.log("Browser smoke checks passed: mobile navigation, project evidence and layouts");
