@@ -21,6 +21,18 @@
       "destination": "/projects/floodguard-ai/index.html"
     },
     {
+      "source": "/projects/indaverse",
+      "destination": "/projects/indaverse/index.html"
+    },
+    {
+      "source": "/projects/teachers-handbook",
+      "destination": "/projects/teachers-handbook/index.html"
+    },
+    {
+      "source": "/projects/yaqini-duniya-technology",
+      "destination": "/projects/yaqini-duniya-technology/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
