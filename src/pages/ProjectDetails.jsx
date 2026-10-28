@@ -72,7 +72,7 @@ function ProjectDetails() {
 
   if (!project) {
     return (
-      <main className="flex min-h-screen flex-col items-center justify-center bg-black px-6 text-center text-white">
+      <main id="main-content" tabIndex={-1} className="flex min-h-screen flex-col items-center justify-center bg-black px-6 text-center text-white">
         <h1 className="text-4xl font-bold">Project not found</h1>
         <p className="mt-4 text-gray-300">This case study is not available.</p>
         <Link to="/projects" className="mt-8 rounded-full bg-cyan-400 px-6 py-3 font-semibold text-black">Browse projects</Link>
@@ -121,7 +121,7 @@ function ProjectDetails() {
         type="article"
         structuredData={structuredData}
       />
-      <main className="min-h-screen overflow-hidden bg-black text-white">
+      <main id="main-content" tabIndex={-1} className="min-h-screen overflow-hidden bg-black text-white">
         <section className="relative border-b border-white/[0.07] px-6 pb-16 pt-32 sm:pb-20">
           <div aria-hidden="true" className="pointer-events-none absolute -right-32 top-20 h-80 w-80 rounded-full bg-cyan-400/[0.05] blur-[110px]" />
           <div className="relative mx-auto max-w-7xl">
