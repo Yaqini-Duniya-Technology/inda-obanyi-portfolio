@@ -11,7 +11,7 @@ permissions:
 jobs:
   browser:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -27,4 +27,4 @@ jobs:
           npm install --no-save --ignore-scripts playwright@1.56.1
           npx playwright install --with-deps chromium
       - name: Test mobile menu, project evidence and responsive overflow
-        run: node scripts/browser-smoke.mjs
+        run: timeout --signal=TERM --kill-after=10s 180s node scripts/browser-smoke.mjs
