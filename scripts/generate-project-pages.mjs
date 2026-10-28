@@ -541,6 +541,21 @@ async function generate() {
     );
   }
 
+  const sitemapUrls = [
+    `${SITE_URL}/`,
+    `${SITE_URL}/projects`,
+    ...projects.map((project) => `${SITE_URL}/projects/${project.id}`),
+  ];
+  const sitemapXml = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ...sitemapUrls.map((url) => `  <url><loc>${escapeHtml(url)}</loc></url>`),
+    '</urlset>',
+    '',
+  ].join("\n");
+  await fs.writeFile(path.join(DIST_DIR, "sitemap.xml"), sitemapXml, "utf8");
+  console.log(`Generated sitemap with ${sitemapUrls.length} URLs.`);
+
   console.log(
     `Successfully generated ${processedIds.size} project pages.`
   );
