@@ -86,6 +86,13 @@ for (const id of ids) {
 if (!sitemap.includes("https://indaobanyi.vercel.app/projects</loc>")) {
   note("Missing projects index in sitemap");
 }
+for (const id of ids) {
+  const source = `/projects/${id}`;
+  const expected = `${source}/index.html`;
+  if (!(config.rewrites || []).some(route => route.source === source && route.destination === expected)) {
+    note(`Missing generated-page Vercel rewrite for ${id}`);
+  }
+}
 for (const route of config.rewrites || []) {
   if (route.source === "/(.*)") continue;
   if (route.destination.startsWith("/projects/")) {
