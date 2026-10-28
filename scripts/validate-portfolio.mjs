@@ -119,6 +119,13 @@ for (const segment of ["/#about", "/#skills", "/#projects", "/#experience", "/#c
   if (!navbar.includes(segment)) note(`Missing navbar section link: ${segment}`);
 }
 
+const headers = (config.headers || []).flatMap(rule => rule.headers || []);
+for (const key of ["X-Content-Type-Options", "Referrer-Policy", "Permissions-Policy", "X-Frame-Options"]) {
+  if (!headers.some(item => item.key === key && item.value)) {
+    note(`Vercel security header missing: ${key}`);
+  }
+}
+
 if (errors.length) {
   console.error("Portfolio validation failed:\n" + errors.map(s => "- " + s).join("\n"));
   process.exitCode = 1;
