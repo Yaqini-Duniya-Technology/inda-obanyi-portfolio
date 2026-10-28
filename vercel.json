@@ -1,9 +1,12 @@
-
 {
   "rewrites": [
     {
       "source": "/projects/fraudguard-ai",
       "destination": "/projects/fraudguard-ai/index.html"
+    },
+    {
+      "source": "/projects/smart-farmai",
+      "destination": "/projects/smart-farmai/index.html"
     },
     {
       "source": "/projects/resume-screening",
