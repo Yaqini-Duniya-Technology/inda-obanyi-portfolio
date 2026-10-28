@@ -21,7 +21,7 @@ function ProjectsPage() {
   );
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-black px-6 pb-24 pt-32 text-white">
+    <main id="main-content" tabIndex={-1} className="relative min-h-screen overflow-hidden bg-black px-6 pb-24 pt-32 text-white">
       {/* =====================================================
           BACKGROUND
       ====================================================== */}
