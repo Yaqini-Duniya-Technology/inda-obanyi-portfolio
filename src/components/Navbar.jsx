@@ -156,7 +156,7 @@ const handleNavigation = (href) => {
           type="button"
           onClick={() => handleNavigation("/")}
           className="group flex items-center gap-3 text-left"
-          aria-label="Inda Obanyi â€” go to homepage"
+          aria-label="Inda Obanyi — go to homepage"
         >
           {/* Compact IO mark */}
           <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl border border-cyan-400/20 bg-cyan-400/[0.07]">
@@ -234,7 +234,7 @@ const handleNavigation = (href) => {
           ) : (
             <Menu size={20} />
           )}
-        </button>src="/images/navbar-logo.webp"
+        </button>
       </nav>
 
       {/* Mobile navigation */}
@@ -245,7 +245,7 @@ const handleNavigation = (href) => {
             <div className="mb-5 flex items-center gap-3 border-b border-white/[0.07] pb-5 sm:hidden">
               <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl border border-cyan-400/20">
                 <img
-
+                  src="/images/navbar-logo.webp"
                   alt=""
                   aria-hidden="true"
                   className="h-full w-full object-cover"
