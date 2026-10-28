@@ -2,7 +2,7 @@ import { chromium } from "playwright";
 import { spawn } from "node:child_process";
 
 const host = "http://127.0.0.1:4173";
-const server = spawn("npm", ["run", "preview", "--", "--host", "127.0.0.1", "--port", "4173", "--strictPort"], { stdio: "pipe", shell: process.platform === "win32" });
+const server = spawn(process.execPath, ["node_modules/vite/bin/vite.js", "preview", "--host", "127.0.0.1", "--port", "4173", "--strictPort"], { stdio: "ignore", windowsHide: true });
 let browser;
 async function waitForServer() {
   for (let retry = 0; retry < 60; retry++) {
@@ -41,4 +41,10 @@ async function main() {
   if (errors.length) throw new Error("Browser errors: " + errors.join("; "));
   console.log("Browser smoke checks passed: mobile navigation, project evidence and layouts");
 }
-try { await main(); } finally { await browser?.close(); server.kill(); }
+try {
+  await main();
+} finally {
+  try { await browser?.close(); } finally {
+    server.kill("SIGTERM");
+  }
+}
